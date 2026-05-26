@@ -20,7 +20,7 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("Window Title")
         self.setContentsMargins(12, 12, 12, 12)
-        self.resize(320, 240)
+        self.resize(640, 480)
 
         layout = QVBoxLayout()
         title_label = QLabel("Title Label (Make this bigger, please!)")
