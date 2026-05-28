@@ -64,6 +64,25 @@ class MainWindow(QMainWindow):
         operation_layout.addWidget(self.operation_label)
         operation_layout.addWidget(self.operation_box)
 
+        # Buttons
+        button_layout = QHBoxLayout()
+
+        self.calculate_button = QPushButton("Calculate")
+        self.calculate_button.clicked.connect(self.clear_inputs)
+
+        self.clear_button = QPushButton("Clear")
+        self.clear_button.clicked.connect(self.clear_inputs)
+
+        button_layout.addWidget(self.calculate_button)
+        button_layout.addWidget(self.clear_button)
+
+        layout.addWidget(self.title_label)
+        layout.addWidget(self.output_label)
+
+        layout.addLayout(input1_layout)
+        layout.addLayout(input2_layout)
+        layout.addLayout(operation_layout)
+
         # add widgets & layouts to main layout
         layout.addWidget(title_label)
 
