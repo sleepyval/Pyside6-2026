@@ -1,6 +1,6 @@
 """
 app_starter.py
-by HundredVisionsGuy
+by Valerie Lee
 A bare bones starter code to begin with.
 """
 
@@ -11,8 +11,11 @@ from PySide6.QtWidgets import (
     QMainWindow,
     QVBoxLayout,
     QWidget,
+    QLineEdit,
+    QPushButton,
+    QComboBox,
 )
-
+from PySide6.QtGui import QFont
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -20,10 +23,14 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("Window Title")
         self.setContentsMargins(12, 12, 12, 12)
-        self.resize(640, 480)
+        self.resize(400, 300)
 
         layout = QVBoxLayout()
-        title_label = QLabel("Title Label (Make this bigger, please!)")
+        self.title_label = QLabel("Simple Calculator")
+        font = QFont()
+        font.setPointSize(18)
+        font.setBold(True)
+        self.title_label.setFont(font)
 
         # add widgets & layouts to main layout
         layout.addWidget(title_label)
