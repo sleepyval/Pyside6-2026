@@ -54,8 +54,8 @@ class MainWindow(QMainWindow):
         self.label2 = QLabel("Second Number:")
         self.input2 = QLineEdit()
         self.input2.setPlaceholderText("Enter a number")
-        input1_layout.addWidget(self.label2)
-        input1_layout.addWidget(self.input2)
+        input2_layout.addWidget(self.label2)
+        input2_layout.addWidget(self.input2)
 
         # Operation dropdown
         operation_layout = QHBoxLayout()
@@ -69,7 +69,7 @@ class MainWindow(QMainWindow):
         button_layout = QHBoxLayout()
 
         self.calculate_button = QPushButton("Calculate")
-        self.calculate_button.clicked.connect(self.clear_inputs)
+        self.calculate_button.clicked.connect(self.calculate)
 
         self.clear_button = QPushButton("Clear")
         self.clear_button.clicked.connect(self.clear_inputs)
@@ -129,8 +129,8 @@ class MainWindow(QMainWindow):
             self.output_label.setText("Error: Something went wrong.")
 
     def clear_inputs(self):
-        self_input1.clear()
-        self_input2.clear()
+        self.input1.clear()
+        self.input2.clear()
 
         self.output_label.setText(
             "Enter two numbers, choose an operation, and click calculate."
