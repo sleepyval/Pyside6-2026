@@ -10,6 +10,7 @@ from PySide6.QtWidgets import (
     QLabel,
     QMainWindow,
     QVBoxLayout,
+    QHBoxLayout,
     QWidget,
     QLineEdit,
     QPushButton,
@@ -49,7 +50,7 @@ class MainWindow(QMainWindow):
         input1_layout.addWidget(self.input1)
         
         # Second number input
-        input1_layout = QHBoxLayout()
+        input2_layout = QHBoxLayout()
         self.label2 = QLabel("First Number:")
         self.input2 = QLineEdit()
         self.input2.setPlaceholderText("Enter a number")
@@ -82,18 +83,58 @@ class MainWindow(QMainWindow):
         layout.addLayout(input1_layout)
         layout.addLayout(input2_layout)
         layout.addLayout(operation_layout)
+        layout.addLayout(button_layout)
 
-        # add widgets & layouts to main layout
-        layout.addWidget(title_label)
-
-        # [OPTIONAL] Add a stretch to move everything up
         layout.addStretch()
 
         widget = QWidget()
         widget.setLayout(layout)
 
-        # Set the central widget of the Window.
         self.setCentralWidget(widget)
+
+    def calculate(self):
+        num1_text = self.input1.text()
+        num2_text = self.input2.text()
+        operation = self.operation_box.currentText()
+
+        if num1_text == "" or num2_text == "":
+            self.output_label.setText("Error: Please fill in both number boxes.")
+            return
+        
+        try:
+            num1 = float(num1_text)
+            num2 = float(num2_text)
+        except ValueError:
+            self.output_label.setText(
+                "Error: Only numbers are allowed. No letters or symbols."
+            )
+            return
+        
+        try:
+            if operation == "+":
+                result = num1 + num2
+            elif operation == "-":
+                result = num1 - num2
+            elif operation == "*":
+                result = num1 * num2 
+            elif operation == "/":
+                if num2 == 0:
+                    self.output_label.setText("Error: Cannot divide by zero.")
+                    return
+                result = num1 / num2
+
+            self.output_label.setText(f"Result: {result}")
+
+        except Exception:
+            self.output_label.setText("Error: Something went wrong.")
+
+    def clear_inputs(self):
+        self_input1.clear()
+        self_input2.clear()
+
+        self.output_label.setText(
+            "Enter two numbers, choose an operation, and click calculate."
+        )
 
 
 if __name__ == "__main__":
