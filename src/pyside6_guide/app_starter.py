@@ -25,7 +25,7 @@ class MainWindow(QMainWindow):
         # Window psetup
         self.setWindowTitle("Window Title")
         self.setContentsMargins(12, 12, 12, 12)
-        self.resize(400, 300)
+        self.resize(450, 300)
 
         # Main layout
         layout = QVBoxLayout()
@@ -51,7 +51,7 @@ class MainWindow(QMainWindow):
         
         # Second number input
         input2_layout = QHBoxLayout()
-        self.label2 = QLabel("First Number:")
+        self.label2 = QLabel("Second Number:")
         self.input2 = QLineEdit()
         self.input2.setPlaceholderText("Enter a number")
         input1_layout.addWidget(self.label2)
