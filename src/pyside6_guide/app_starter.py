@@ -61,7 +61,7 @@ class MainWindow(QMainWindow):
         operation_layout = QHBoxLayout()
         self.operation_label = QLabel("Operation")
         self.operation_box = QComboBox()
-        self.operation_box.adjustment(["+", "-", "*", "/"])
+        self.operation_box.addItems(["+", "-", "*", "/"])
         operation_layout.addWidget(self.operation_label)
         operation_layout.addWidget(self.operation_box)
 
